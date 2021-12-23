@@ -36,7 +36,7 @@ int main()
     int a[n];
     for (i=0;i<n;i++)
     {
-        printf("Enter %d element\n",i+!);
+        printf("Enter %d element\n",i+1);
         scanf("%d",&a[i]);
     }
     printf("Enter element to search\n");
