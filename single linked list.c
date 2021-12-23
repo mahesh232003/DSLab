@@ -123,14 +123,14 @@ node* insert_at_ending(node* first,int x)
 node* insert(node* first,int x,int pos)
 {
         int i;
-        node* temp=first;
+        node *temp=first;
         int n=count(first);
         if (pos>1&&pos<n)
         {
-                node* new=(node*)malloc(sizeof(node));
+                node *new=(node*)malloc(sizeof(node));
                 new->data=x;
                 new->next=NULL;
-                for (i=0;i<pos-i;i++)
+                for (i=0;i<pos-1;i++)
                 {
                         temp=temp->next;
                 }
