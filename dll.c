@@ -235,50 +235,81 @@ node* insertatpos(node *first,int x,int pos)
 }
 node* reverse(node *first)
 {
-    node *pre=first,*prev=NULL,*save;
-    while(pre!=NULL)
+    int x;
+    node *temp=NULL,*temp1=first;
+    if (first==NULL)
     {
-        save=pre->next;
-        pre->next=prev;
-        prev=pre;
-        pre=save;
+        return temp;
     }
-    return prev;
+    else
+    {
+        while(temp1!=NULL)
+        {
+            temp=insertatbegin(temp,temp1->data);
+            temp1=temp1->right;
+        }
+    }
+    return temp;
 }
 int main()
 {
-    int c,ele,x,x1,x2,x3,pos;
+    int x,c,ele,xl,xi,pos,xd,ch;
     node *head=NULL;
-    head=create(head);
-    display(head);
-    c=count(head);
-    printf("Number of elements in double linked list are %d\n",c);
-    printf("Enter element to search\n");
-    scanf("%d",&ele);
-    search(head,ele);
-    display(head);
-    printf("After sorting\n");
-    head=sort(head);
-    display(head);
-    printf("Enter element to delete\n");
-    scanf("%d",&x);
-    head=delete(head,x);
-    display(head);
-    printf("Enter element to insert at beginning\n");
-    scanf("%d",&x1);
-    head=insertatbegin(head,x1);
-    display(head);
-    printf("Enter element to insert at ending\n");
-    scanf("%d",&x2);
-    head=insertatend(head,x2);
-    display(head);
-    printf("Enter element to insert at a postion\n");
-    scanf("%d",&x3);
-    printf("Enter position to insert\n");
-    scanf("%d",&pos);
-    head=insertatpos(head,x3,pos);
-    display(head);
+    node *iob,*ioe,*in;
+    printf("Enter your choice\n1:create\n2:display\n3:count\n4:search\n5:insert at beginning\n6:insert at ending\n7:insert at position\n8:delete\n9:sort\n10:reverse\n11:exit\n");
+    scanf("%d",&ch);
+    while(ch!=11)
+    {
+        switch(ch)
+        {
+            case 1: head=create(head);
+                    break;
+            case 2: display(head);
+                    break;
+            case 3: c=count(head);
+                    printf("%d elements in list\n",c);
+                    break;
+            case 4: printf("Enter element to search:");
+                    scanf("%d",&ele);
+                    search(head,ele);
+                    break;
+            case 5: printf("Enter element to insert at beginning:");
+                    scanf("%d",&x);
+                    head=insertatbegin(head,x);
+                    display(head);
+                    break;
+            case 6: printf("Enter element to insert at ending:");
+                    scanf("%d",&xl);
+                    head=insertatend(head,xl);
+                    display(head);
+                    break;
+            case 7: printf("Enter position to insert an element:");
+                    scanf("%d",&pos);
+                    printf("Enter element to insert at position:");
+                    scanf("%d",&xi);
+                    head=insertatpos(head,xi,pos);
+                    display(head);
+                    break;
+            case 8: printf("Enter element to delete:");
+                    scanf("%d",&xd);
+                    delete(head,xd);
+                    display(head);
+                    break;
+            case 9: head=sort(head);
+                    display(head);
+                    break;
+            case 10:head=reverse(head);
+                    display(head);
+                    break;
+            default:printf("Enter a correct choice\n");
+                    break;
+        }
+        printf("Enter your choice\n1:create\n2:display\n3:count\n4:search\n5:insert at beginning\n6:insert at ending\n7:insert at position\n8:delete\n9:sort\n10:reverse\n11:exit\n");
+        scanf("%d",&ch);
+    }
+    if (ch==11)
+    {
+        printf("You entered 11 so exitting program\n");
+    }
     return 0;
 }
-
-
