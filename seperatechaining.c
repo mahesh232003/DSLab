@@ -1,163 +1,31 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-void display(node *t[10])
+#include <stdio.h>
+#include <stdlib.h>
+struct hashtable
 {
-        int i;
-        for (i=0;i<10;i++)
+        int data;
+        struct hashtable *next;
+};
+typedef struct hashtable node;
+int hash(int x)
+{
+        return x%10;
+}
+void insert(node *t[10],int x)
+{
+        int i=hash(x);
+        node *p=(node*)malloc(sizeof(node));
+        p->data=x;
+        p->next=NULL;
+        if(t[i]->next==NULL)
         {
-                node *p=t[i]->next;
-
-                if (p==NULL)
-                {
-                        printf("NULL\n");
-                }
-                else
-                {
-                        while(p!=NULL)
-                        {
-                                printf("|%d|->",p->data);
-                                p=p->next;
-                        }
-                        printf("NULL");
-                        printf("\n");
+                t[i]->next=p;
+        }
+        else
+        {
+                p->next=t[i]->next;
+                t[i]->next=p;
+        }
+}
 {
         int i=hash(x);
         node *p=(node*)malloc(sizeof(node));
