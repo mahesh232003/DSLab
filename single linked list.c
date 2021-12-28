@@ -179,6 +179,8 @@ node* delete(node* first,int x)
 }
 node* sort(node* first)
 {
+        node *temp1,*temp2;
+        int x;
         for(temp1=first;temp1->next!=NULL;temp1=temp1->next)
         {
                 for(temp2=temp1->next;temp2!=NULL;temp2=temp2->next)
@@ -210,6 +212,7 @@ int main()
         int x,c,ele,xl,xi,pos,xd,ch;
         node *head=NULL;
         node *iob,*ioe,*in;
+        printf("Enter your choice\n1:Create\n2:Display\n3:Count\n4:Search\n5:Insert at beginning\n6:Insert at ending\n7:Insert at position\n8:Delete\n9:Sort\n10:Reverse\n11:Exit\n");
         scanf("%d",&ch);
         while(ch!=11)
         {
@@ -219,9 +222,13 @@ int main()
                                 break;
                         case 2: display(head);
                                 break;
+                        case 3: c=count(head);
+                                printf("total number of elements in list are %d\n",c);
                                 break;
                         case 4: printf("Enter element to search:");
                                 scanf("%d",&ele);
+                                search(head,ele);
+                                break;
                         case 5: printf("Enter element to insert at beginning:");
                                 scanf("%d",&x);
                                 head=insert_at_beginning(head,x);
