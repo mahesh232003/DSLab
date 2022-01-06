@@ -26,21 +26,6 @@ void insert(node *t[10],int x)
                 t[i]->next=p;
         }
 }
-{
-        int i=hash(x);
-        node *p=(node*)malloc(sizeof(node));
-        p->data=x;
-        p->next=NULL;
-        if(t[i]->next==NULL)
-        {
-                t[i]->next=p;
-        }
-        else
-        {
-                p->next=t[i]->next;
-                t[i]->next=p;
-        }
-}
 void search(node *t[10],int x)
 {
         int i=hash(x),flag=0;
