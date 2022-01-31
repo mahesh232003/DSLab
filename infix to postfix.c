@@ -32,16 +32,13 @@ void precedence(char ch)
 int main()
 {
     char infix[max],x,ch;
-    int i;
+    int i=0;
     printf("Enter infix\n");
     scanf("%s",infix);
-    printf("Hi");
-    printf("%s",infix);
-    i=0;
     while(infix[i]!='\0')
     {
         ch=infix[i];
-        if (isalpha(ch)!=0||isdigit(ch)!=0)
+        if (isalpha(ch)||isdigit(ch))
         {
             postfix[j++]=ch;
         }
@@ -51,26 +48,16 @@ int main()
             {
                 case '(':push(ch);
                          break;
-                case '^':precedence(ch);
-                         push(ch);
-                         break;
-                case '*':precedence(ch);
-                         push(ch);
-                         break;
-                case '%':precedence(ch);
-                         push(ch);
-                         break;
-                case '/':precedence(ch);
-                         push(ch);
-                         break;
-                case '+':precedence(ch);
-                         push(ch);
-                         break;
+                case '^':
+                case '*':
+                case '%':
+                case '/':
+                case '+':
                 case '-':precedence(ch);
                          push(ch);
                          break;
                 case ')':x=pop();
-                         while(ch!='(')
+                         while(x!='(')
                          {
                              postfix[j++]=x;
                              x=pop();
@@ -88,9 +75,3 @@ int main()
     printf("Postfix for given infix is %s",postfix);
     return 0;
 }
-
-
-
-
-
-
