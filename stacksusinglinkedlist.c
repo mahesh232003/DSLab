@@ -11,6 +11,7 @@ void push(int x)
 {
         node *new;
         new=(node*)malloc(sizeof(node));
+        new->data=x;
         new->next=NULL;
         if(top==NULL)
         {
